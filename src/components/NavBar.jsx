@@ -9,7 +9,7 @@ export default function Navbar() {
         <AppBar>
             <Container>
                 
-                <Toolbar>
+                <Toolbar disableGutters>
 
                     <Box>
                         <IconButton
