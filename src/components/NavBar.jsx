@@ -1,10 +1,20 @@
-import { AppBar, Container, Toolbar } from "@mui/material";
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+import React, { useState } from 'react';
+import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 
+
 export default function Navbar() {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget)
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
+
     return (
         <AppBar>
             <Container>
@@ -17,11 +27,31 @@ export default function Navbar() {
                         aria-label="account of current user"
                         aria-controls="menu-appbar"
                         aria-haspopup="true"
-                        // onClick={handleOpenNavMenu}
+                        onClick={handleMenu}
                         color="inherit"
                         >
                         <MenuIcon />
                         </IconButton>
+
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            {/* Add MenuItem elements here */}
+                            <MenuItem onClick={handleClose}>Option 1</MenuItem>
+                            <MenuItem onClick={handleClose}>Option 2</MenuItem>
+                        </Menu>
                     </Box>
 
                     <Typography
