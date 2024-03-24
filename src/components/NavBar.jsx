@@ -4,38 +4,37 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function Navbar() {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+    const [menu, setMenu] = useState(false);
+    const menuStatus = Boolean(menu);
+    console.log(menuStatus)
 
     const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget)
+        console.log(menuStatus)
+        setMenu(event.currentTarget)
     }
 
     const handleClose = () => {
-        setAnchorEl(null)
+        setMenu(false)
     }
 
     return (
         <AppBar>
             <Container>
-                
                 <Toolbar disableGutters>
-
                     <Box>
                         <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleMenu}
-                        color="inherit"
+                            size="large"
+                            aria-label="menu"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleMenu}
+                            color="inherit"
                         >
-                        <MenuIcon />
+                            <MenuIcon />
                         </IconButton>
-
                         <Menu
                             id="menu-appbar"
-                            anchorEl={anchorEl}
+                            anchorEl={menu}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'left',
@@ -45,15 +44,13 @@ export default function Navbar() {
                                 vertical: 'top',
                                 horizontal: 'left',
                             }}
-                            open={open}
+                            open={menuStatus}
                             onClose={handleClose}
                         >
-                            {/* Add MenuItem elements here */}
-                            <MenuItem onClick={handleClose}>Option 1</MenuItem>
-                            <MenuItem onClick={handleClose}>Option 2</MenuItem>
+                            <MenuItem onClick={handleClose}>Alt TrackR</MenuItem>
+                            <MenuItem onClick={handleClose}>Hidden Lairs</MenuItem>
                         </Menu>
                     </Box>
-
                     <Typography
                         variant="h6"
                         noWrap
@@ -71,10 +68,8 @@ export default function Navbar() {
                     >
                         Immortal TrackR
                     </Typography>
-
                 </Toolbar>
-
             </Container>
         </AppBar>
-    )
+    );
 }
